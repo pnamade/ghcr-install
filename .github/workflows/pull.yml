@@ -1,5 +1,5 @@
-on:
-  push:
+
+on: [push, repository_dispatch]
 
 env:
   IMAGE: ghcr.io/${{ github.repository_owner }}/ghcr-publish:latest
