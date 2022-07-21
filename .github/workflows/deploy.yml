@@ -32,5 +32,5 @@ jobs:
           
       - name: list image
         run: |
-          docker image ls
+          docker image ls -la
         shell: bash
