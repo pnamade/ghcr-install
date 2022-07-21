@@ -34,3 +34,13 @@ jobs:
         run: |
           docker image ls -a
         shell: bash
+        
+      - name: Delete image
+        uses: bots-house/ghcr-delete-image-action@v1.0.0
+        with:
+          # NOTE: at now only orgs is supported
+          owner: bots-house
+          name: some-web-service
+          # NOTE: using Personal Access Token
+          token: ${{ secrets.REGISTRY_TOKEN }}
+          tag: ghcr.io/${{ github.repository }}:${{github.run_number}}
