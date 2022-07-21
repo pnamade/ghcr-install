@@ -17,11 +17,15 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       
       - name: Delete image
-        uses: bots-house/ghcr-delete-image-action@v1.0.0
-        with: 
-          token: ${{ secrets.REGISTRY_TOKEN }}
-          owner: bots-house
-          name: some-web-service
-          tag: latest
+        run: |
+          docker image ls
+        shell: bash
+        
+        #uses: bots-house/ghcr-delete-image-action@v1.0.0
+        #with: 
+         # token: ${{ secrets.REGISTRY_TOKEN }}
+         # owner: bots-house
+         # name: some-web-service
+         # tag: latest
           #min-versions-to-keep: 1
           #delete-only-pre-release-versions: "true"
