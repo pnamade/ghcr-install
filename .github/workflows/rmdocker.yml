@@ -23,4 +23,4 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:latest
           min-versions-to-keep: 1
-          delete-only-pre-release-versions: "true"
+          #delete-only-pre-release-versions: "true"
