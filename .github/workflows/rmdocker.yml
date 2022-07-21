@@ -20,6 +20,8 @@ jobs:
         uses: bots-house/ghcr-delete-image-action@v1.0.0
         with: 
           token: ${{ secrets.REGISTRY_TOKEN }}
+          owner: bots-house
+          name: some-web-service
           tags: |
             ghcr.io/${{ github.repository }}:latest
           min-versions-to-keep: 1
