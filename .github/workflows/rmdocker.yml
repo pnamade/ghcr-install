@@ -17,11 +17,10 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       
       - name: Delete image
-        uses: actions/delete-package-versions@v3
+        uses: bots-house/ghcr-delete-image-action@v1.0.0
         with: 
-          owner: 'github'
-          repo: 'packages'
-          package-name: 'test-package'
           token: ${{ secrets.REGISTRY_TOKEN }}
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
           min-versions-to-keep: 1
           delete-only-pre-release-versions: "true"
