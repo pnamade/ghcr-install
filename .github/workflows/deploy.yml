@@ -23,12 +23,12 @@ jobs:
           #tags: |
            # ghcr.io/${{ github.repository }}:latest
            
-      # - name: run docker and push
-        # run: |
-          # docker build -f ./Dockerfile . -t test:${{github.run_number}} --build-arg NODE_AUTH_TOKEN=$NODE_AUTH_TOKEN
-          # docker tag test:${{github.run_number}} ghcr.io/ghcr-install/test:${{github.run_number}}
-          # docker push ghcr.io/ghcr-install/test:${{github.run_number}}
-        # shell: bash
+      - name: run docker and push
+        run: |
+          docker build -f ./Dockerfile . -t test:${{github.run_number}} --build-arg NODE_AUTH_TOKEN=$NODE_AUTH_TOKEN
+          docker tag test:${{github.run_number}} ghcr.io/ghcr-install/test:${{github.run_number}}
+          docker push ghcr.io/ghcr-install/test:${{github.run_number}}
+        shell: bash
           
       - name: list image
         run: |
