@@ -21,3 +21,7 @@ jobs:
           push: true # Will only build if this is not here
           tags: |
             ghcr.io/${{ github.repository }}:latest
+      - name: list image
+        run: |
+          docker image ls
+        shell: bash
