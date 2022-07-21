@@ -3,16 +3,17 @@ name: '[RM] Preview'
 on: workflow_dispatch
 
 jobs:
-  purge-image:
-    name: Delete image from ghcr.io
+  Deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v1
       - name: Delete image
-        - uses: actions/delete-package-versions@v3
-          with: 
-            owner: 'github'
-            repo: 'packages'
-            package-name: 'test-package'
-            token: ${{ secrets.REGISTRY_TOKEN }}
-            min-versions-to-keep: 1
-            delete-only-pre-release-versions: "true"
+        uses: actions/delete-package-versions@v3
+        with: 
+          owner: 'github'
+          repo: 'packages'
+          package-name: 'test-package'
+          token: ${{ secrets.REGISTRY_TOKEN }}
+          min-versions-to-keep: 1
+          delete-only-pre-release-versions: "true"
