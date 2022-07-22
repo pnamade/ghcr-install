@@ -35,12 +35,23 @@ jobs:
           docker image ls -a
         shell: bash
         
-      - name: Delete image
-        uses: bots-house/ghcr-delete-image-action@v1.0.0
+      #- name: Delete image
+       # uses: bots-house/ghcr-delete-image-action@v1.0.0
+       # with:
+       #   # NOTE: at now only orgs is supported
+       #   owner: bots-house
+       #   name: some-web-service
+       #   # NOTE: using Personal Access Token
+       #   token: ${{ secrets.REGISTRY_TOKEN }}
+       #   tag: ghcr.io/${{ github.repository }}:${{github.run_number}}
+          
+      - name: Prune
+        uses: vlaurin/action-ghcr-prune@main
         with:
-          # NOTE: at now only orgs is supported
-          owner: bots-house
-          name: some-web-service
-          # NOTE: using Personal Access Token
           token: ${{ secrets.REGISTRY_TOKEN }}
-          tag: ghcr.io/${{ github.repository }}:${{github.run_number}}
+          #organization: your-org
+          container: ghcr-install
+          dry-run: true # Dry-run first, then change to `false`
+          older-than: 7 # days
+          keep-last: 2
+          untagged: true
