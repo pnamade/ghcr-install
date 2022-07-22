@@ -52,6 +52,6 @@ jobs:
           #organization: your-org
           container: ghcr-install
           dry-run: true # Dry-run first, then change to `false`
-          older-than: 7 # days
+          older-than: 1 # days
           keep-last: 2
           untagged: true
