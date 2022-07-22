@@ -50,7 +50,7 @@ jobs:
         with:
           token: ${{ secrets.REGISTRY_TOKEN }}
           #organization: your-org
-          container: ghcr-install
+          container: ghcr.io/${{ github.repository }}
           dry-run: true # Dry-run first, then change to `false`
           older-than: 0 # days
           keep-last: 1
