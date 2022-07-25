@@ -54,6 +54,19 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2 
+      
+      - name: Deploy to DEV
+        run: echo Simulating Deployment    
+          
+      - uses: JasonEtco/create-an-issue@v2
+        name: Create approval Issue for Prod
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ENVIRONMENT: Prod
+          RUNNUMBER: ${{ needs.parse.outputs.ci-run-number }}
+        with:
+          filename: .github/deployment-approval.md
+      
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
