@@ -9,6 +9,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
+      
+      - name: Create an issue
+        uses: JasonEtco/create-an-issue@v2.6.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ENVIRONMENT: Dev
+          RUNNUMBER: ${{ github.run_number  }}
+        with:         
+          filename: .github/deployment-approval.md
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
