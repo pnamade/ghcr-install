@@ -7,7 +7,7 @@ on:
     types: [created]
 
 jobs:
-  Deploy:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -23,7 +23,7 @@ jobs:
           filename: .github/deployment-approval.md
           
   parse:
-    needs: [Deploy]
+    needs: [setup]
     if: ${{ !github.event.issue.pull_request && github.event.comment.body == 'Approved' }}
     runs-on: ubuntu-latest
     outputs:
@@ -52,7 +52,7 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
           
   deploy-dev:
-    needs: [parse]
+    needs: [setup,parse]
     if: ${{ needs.parse.outputs.deploy-environment == 'Dev' }}
     runs-on: ubuntu-latest
     
