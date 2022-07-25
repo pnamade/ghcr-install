@@ -53,7 +53,7 @@ jobs:
           
   deploy-dev:
     needs: [setup,parse]
-    if: ${{ needs.parse.outputs.deploy-environment == 'Dev' }}
+    #if: ${{ needs.parse.outputs.deploy-environment == 'Dev' }}
     runs-on: ubuntu-latest
     
     steps:
