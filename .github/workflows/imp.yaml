@@ -1,4 +1,4 @@
-name: Deploy Docker
+name: Imp Docker
 
 # Run workflow on tags starting with v (eg. v2, v1.2.0)
 on: 
@@ -15,7 +15,7 @@ jobs:
         uses: trstringer/manual-approval@v1
         with:
          secret: ${{ github.TOKEN }}
-         approvers: pnamade
+         approvers: praveenkumar.tn@outlook.com
          
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
