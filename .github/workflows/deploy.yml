@@ -23,7 +23,7 @@ jobs:
     needs: [Deploy]
     #if: ${{ !github.event.issue.pull_request && github.event.comment.body == 'Approved' }}
     runs-on: ubuntu-latest
-    outputs:
+    #outputs:
       #deploy-environment: ${{ fromJSON(steps.issue_body_parser.outputs.payload).environment }}
       #ci-run-number: ${{ fromJSON(steps.issue_body_parser.outputs.payload).runNumber }}
     steps:
