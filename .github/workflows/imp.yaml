@@ -16,6 +16,13 @@ jobs:
         with:
          secret: ${{ github.TOKEN }}
          approvers: pnamade
+         
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
           
         
       - name: Build and Push Docker Image
