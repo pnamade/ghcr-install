@@ -21,11 +21,11 @@ jobs:
           
   parse:
     needs: [Deploy]
-    #if: ${{ !github.event.issue.pull_request && github.event.comment.body == 'Approved' }}
+    if: ${{ !github.event.issue.pull_request && github.event.comment.body == 'Approved' }}
     runs-on: ubuntu-latest
-    #outputs:
-      #deploy-environment: ${{ fromJSON(steps.issue_body_parser.outputs.payload).environment }}
-      #ci-run-number: ${{ fromJSON(steps.issue_body_parser.outputs.payload).runNumber }}
+    outputs:
+      deploy-environment: ${{ fromJSON(steps.issue_body_parser.outputs.payload).environment }}
+      ci-run-number: ${{ fromJSON(steps.issue_body_parser.outputs.payload).runNumber }}
     steps:
       - name: Comment on Issue      
         uses: peter-evans/create-or-update-comment@v1
