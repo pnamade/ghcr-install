@@ -7,23 +7,23 @@ on:
     types: [created]
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v1
+  #setup:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Checkout Code
+  #      uses: actions/checkout@v1
       
-      - name: Create an issue
-        uses: JasonEtco/create-an-issue@v2.6.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ENVIRONMENT: Dev
-          RUNNUMBER: ${{ github.run_number  }}
-        with:         
-          filename: .github/deployment-approval.md
+  #    - name: Create an issue
+  #      uses: JasonEtco/create-an-issue@v2.6.0
+  #      env:
+  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #        ENVIRONMENT: Dev
+  #        RUNNUMBER: ${{ github.run_number  }}
+  #      with:         
+  #        filename: .github/deployment-approval.md
           
   parse:
-    needs: [setup]
+    #needs: [setup]
     if: ${{ !github.event.issue.pull_request && github.event.comment.body == 'Approved' }}
     runs-on: ubuntu-latest
     outputs:
