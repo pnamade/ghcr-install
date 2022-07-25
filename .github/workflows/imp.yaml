@@ -18,7 +18,7 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:${{github.run_number}}
             
-       - name: list image
+      - name: list image
         run: |
           docker image ls -a
         shell: bash
