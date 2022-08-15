@@ -21,7 +21,7 @@ jobs:
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
-          approvers: trstringer,acdunnigan
+          approvers: pnamade
       - name: Deploy to production
         run: echo deploying
         
