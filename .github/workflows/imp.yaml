@@ -1,11 +1,8 @@
 name: Imp Docker
 
 # Run workflow on tags starting with v (eg. v2, v1.2.0)
-on: 
+on: push
   #workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
 
